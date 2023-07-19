@@ -4,6 +4,7 @@ import streamlit as st
 try:
   mesas=pd.read_csv("mesas.csv",index=0)
 except:
+  st.write('Fallo')
   mesas=pd.DataFrame(index=range(1,1000), columns=["Votos","Cernadas","Cufre"])
 
 st.title("""Escrutinio Rapido""")
@@ -15,6 +16,6 @@ votos_cufre = st.number_input("""Votos Cufre: """, min_value=1, max_value=400, h
 title = st.text_input('Comentarios adicionales: ', '')
 
 if st.button('Guardar'):
-  st.write('El porcentaje de votos de JxC es ', ((votos_cernadas+votos_cufre)/votos_totales-1)*100)
+  st.write('El porcentaje de votos de JxC es ', ((votos_cernadas+votos_cufre)/votos_totales)*100)
   mesas.loc[mesa] = [votos_totales,votos_cernadas,votos_cufre]
   mesas.to_csv("mesas.csv")
