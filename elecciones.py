@@ -3,7 +3,7 @@ import streamlit as st
 
 try:
   mesas=pd.read_csv("https://drive.google.com/file/d/1D5UHd0erineK4asRMBxnpecF1Vu9bd-2",index_col=0)
-  st.write(mesas)
+  st.write(mesas.columns)
 except:
   st.write('Fallo')
   mesas=pd.DataFrame(index=range(1,1000), columns=["Votos","Cernadas","Cufre"])
