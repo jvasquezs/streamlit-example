@@ -4,7 +4,7 @@ import streamlit as st
 try:
   mesas=pd.read_csv(mesas.csv,index=0)
 except:
-  mesas=pd.DataFrame(index=range(1,1000), col_names=["Votos","Cernadas","Cufre"])
+  mesas=pd.DataFrame(index=range(1,1000), columns=["Votos","Cernadas","Cufre"])
 
 st.title("""Escrutinio Rapido""")
 mesa = st.number_input("""Mesa: """, min_value=1, max_value=900, help="""Número de mesa""")
