@@ -4,6 +4,7 @@ import streamlit as st
 try:
   mesas=pd.read_csv("mesas.csv",index_col=0)
   st.write(mesas.columns)
+  st.write(mesas.loc[1]
 except:
   st.write('Fallo')
   mesas=pd.DataFrame(index=range(1,1000), columns=["Votos","Cernadas","Cufre"])
