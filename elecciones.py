@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 
 try:
-  mesas=pd.read_csv("https://drive.google.com/file/d/1D5UHd0erineK4asRMBxnpecF1Vu9bd-2",index_col=0)
+  mesas=pd.read_csv("mesas.csv",index_col=0)
   st.write(mesas.columns)
 except:
   st.write('Fallo')
@@ -19,4 +19,7 @@ title = st.text_input('Comentarios adicionales: ', '')
 if st.button('Guardar'):
   st.write('El porcentaje de votos de JxC es ', ((votos_cernadas+votos_cufre)/votos_totales)*100)
   mesas.loc[mesa] = [votos_totales,votos_cernadas,votos_cufre]
-  mesas.to_csv("https://drive.google.com/file/d/1D5UHd0erineK4asRMBxnpecF1Vu9bd-2")
+  try:
+    mesas.to_csv("mesas.csv")
+  except:
+    st.write("Fallo el salvado")
