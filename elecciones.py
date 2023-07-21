@@ -1,14 +1,6 @@
 import pandas as pd
 import streamlit as st
 
-try:
-  mesas=pd.read_csv("mesas.csv",index_col=0)
-  st.write(mesas.columns)
-  st.write(mesas.loc[2])
-except:
-  st.write('Fallo')
-  mesas=pd.DataFrame(index=range(1,1000), columns=["Votos","Cernadas","Cufre"])
-
 st.title("""Escrutinio Rapido""")
 mesa = st.number_input("""Mesa: """, min_value=1, max_value=900, help="""Número de mesa""")
 votos_totales = st.number_input("""Votantes: """, value=1, min_value=1, max_value=400, help="""Cantidad de votantes""")
